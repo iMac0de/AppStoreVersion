@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  AppStoreVersion
+
+  Created by Jérémy Peltier on 25/10/2018.
+  Copyright © 2018 Jérémy Peltier. All rights reserved.
+*/
+
+"AppStoreVersion.NewVersionTitle" = "New Version Available!";
+"AppStoreVersion.NewVersionMessage" = "The version %@ is available on the AppStore.";
+"AppStoreVersion.Download" = "Download";
+"AppStoreVersion.Later" = "Later";

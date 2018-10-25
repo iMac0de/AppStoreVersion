@@ -1,0 +1,5 @@
+os: osx
+language: swift
+osx_image: xcode10
+script:
+  - xcodebuild -scheme AppStoreVersion -workspace AppStoreVersion.xcworkspace -sdk iphonesimulator12.0
