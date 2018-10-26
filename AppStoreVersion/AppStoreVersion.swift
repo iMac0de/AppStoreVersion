@@ -11,6 +11,18 @@ import Alamofire
 
 open class AppStoreVersion {
 
+    private static var appStoreVersionBundle: Bundle {
+        let path = Bundle(for: AppStoreVersion.self).path(forResource: "Localizable", ofType: "bundle")!
+        let bundle = Bundle(path: path) ?? Bundle.main
+        return bundle
+    }
+
+    private class var version: String {
+        return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
+    }
+
+    private static var cache: [String: Any]? = nil
+
     struct Keys {
         static let kAppStoreResultsKey = "results"
         static let kAppStoreVersionKey = "version"
@@ -20,16 +32,14 @@ open class AppStoreVersion {
     public struct Config {
         public static var optional: Bool = true
         public struct Alert {
-            public static var title: String = NSLocalizedString("AppStoreVersion.NewVersionTitle", comment: "")
-            public static var message: String = NSLocalizedString("AppStoreVersion.NewVersionMessage", comment: "")
-            public static var downloadActionTitle: String = NSLocalizedString("AppStoreVersion.Download", comment: "")
-            public static var laterActionTitle: String = NSLocalizedString("AppStoreVersion.Later", comment: "")
+            public static var title: String = NSLocalizedString("AppStoreVersion.NewVersionTitle", tableName: nil, bundle: appStoreVersionBundle, value: "", comment: "")
+            public static var message: String = NSLocalizedString("AppStoreVersion.NewVersionMessage", tableName: nil, bundle: appStoreVersionBundle, value: "", comment: "")
+            public static var downloadActionTitle: String = NSLocalizedString("AppStoreVersion.Download", tableName: nil, bundle: appStoreVersionBundle, value: "", comment: "")
+            public static var laterActionTitle: String = NSLocalizedString("AppStoreVersion.Later", tableName: nil, bundle: appStoreVersionBundle, value: "", comment: "")
         }
     }
 
-    private class var version: String {
-        return Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
-    }
+    public static var latestVersionAvailable: String = ""
 
     private class func endpoint(for bundle: Bundle) -> URL? {
         if let identifier = bundle.bundleIdentifier {
@@ -42,10 +52,6 @@ open class AppStoreVersion {
         }
         return nil
     }
-
-    private static var cache: [String: Any]? = nil
-
-    public static var latestVersionAvailable: String = ""
 
     /**
      This method can be used to check if the param bundle version is the latest version available on the AppStore corresponding to the param bundle identifier. It will manage the display of an `UIAlertController` with an `UIAlertAction` to download the latest version if needed.
