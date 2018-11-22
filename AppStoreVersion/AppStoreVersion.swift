@@ -112,7 +112,7 @@ open class AppStoreVersion {
                     if let appStoreVersion = result[Keys.kAppStoreVersionKey] as? String {
                         self.cache = result
                         self.latestVersionAvailable = appStoreVersion
-                        if currentVersion == appStoreVersion {
+                        if currentVersion >= appStoreVersion {
                             completion(true, nil)
                         } else {
                             completion(false, nil)

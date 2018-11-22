@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AppStoreVersion"
-  s.version      = "1.0.0"
+  s.version      = "1.0.1"
   s.summary      = "An easy Swift framework to check your latest app version available on the AppStore and compare it to the installed version"
   s.description  = <<-DESC
 			An easy Swift framework to check your latest app version available on the AppStore and compare it to the installed version.
