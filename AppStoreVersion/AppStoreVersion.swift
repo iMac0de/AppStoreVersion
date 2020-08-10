@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Alamofire
 
 open class AppStoreVersion {
 
@@ -23,7 +22,7 @@ open class AppStoreVersion {
 
     private static var cache: [String: Any]? = nil
 
-    struct Keys {
+    private struct Keys {
         static let kAppStoreResultsKey = "results"
         static let kAppStoreVersionKey = "version"
         static let kAppStoreURLKey = "trackViewUrl"
@@ -40,7 +39,7 @@ open class AppStoreVersion {
     }
 
     public static var latestVersionAvailable: String = ""
-
+    
     private class func endpoint(for bundle: Bundle) -> URL? {
         if let identifier = bundle.bundleIdentifier {
             let base = "https://itunes.apple.com/%@/lookup?bundleId=%@"
@@ -51,6 +50,23 @@ open class AppStoreVersion {
             }
         }
         return nil
+    }
+    
+    /**
+     The `AppStoreVersionEnum` holds all error cases of the framework.
+     */
+    public enum AppStoreVersionError: Error {
+        // This error will be returned if the request to the App Store lookup API returns an invalid response code.
+        case invalidAppStoreResponseCode
+        
+        // This error will be returned if the framework is unable to read the JSON returned from the App Store lookup API.
+        case unableToReadAppStoreResponse
+        
+        // This error will be returned if the framework is not able to find the mandatory keys in the JSON returned from the App Store lookup API.
+        case mandatoryKeysNotFound
+        
+        // This error will be returned if the framework is not able to find the App Store version of your app in the JSON returned from the App Store lookup API.
+        case appStoreVersionNotFound
     }
 
     /**
@@ -90,7 +106,7 @@ open class AppStoreVersion {
      - Parameter bundle: The bundle of the application to check. Can be retrieve with `Bundle.main`.
      - Parameter completion: A completion handler which will be call when the checking is completed.
      - Parameter upToDate: If `true`, the given bundle version is the latest version available on the AppStore. If `false`, a new version is available.
-     - Parameter error: An optional `Error` which will help you to understand why it doesn't work.
+     - Parameter error: An optional `AppStoreVersionError` which will help you to understand why it doesn't work.
     */
     open class func check(bundle: Bundle, _ completion: @escaping (_ upToDate: Bool, _ error: Error?) -> Void) {
         guard let url = endpoint(for: bundle), let currentVersion = bundle.infoDictionary!["CFBundleShortVersionString"] as? String else {
@@ -100,35 +116,51 @@ open class AppStoreVersion {
         DispatchQueue.main.async {
             UIApplication.shared.isNetworkActivityIndicatorVisible = true
         }
-
-        Alamofire.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: nil).validate().responseJSON { (response) in
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
             DispatchQueue.main.async {
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
+            
+            guard let data = data, let response = response as? HTTPURLResponse else {
+                completion(false, AppStoreVersionError.unableToReadAppStoreResponse)
+                return
+            }
+            
+            guard (200...299) ~= response.statusCode else {
+                completion(false, AppStoreVersionError.invalidAppStoreResponseCode)
+                return
+            }
+            
+            do {
+                guard let json = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] else {
+                    completion(false, AppStoreVersionError.unableToReadAppStoreResponse)
+                    return
+                }
 
-            switch response.result {
-            case .success:
-                if let data = response.result.value as? [String: Any], let results = data[Keys.kAppStoreResultsKey] as? NSArray, let result = results.firstObject as? [String: Any] {
-                    if let appStoreVersion = result[Keys.kAppStoreVersionKey] as? String {
-                        self.cache = result
-                        self.latestVersionAvailable = appStoreVersion
-                        if currentVersion >= appStoreVersion {
-                            completion(true, nil)
-                        } else {
-                            completion(false, nil)
-                        }
-                    } else {
-                        completion(false, nil)
-                    }
+                guard let results = json[Keys.kAppStoreResultsKey] as? NSArray, let result = results.firstObject as? [String: Any] else {
+                    completion(false, AppStoreVersionError.mandatoryKeysNotFound)
+                    return
+                }
+                
+                guard let appStoreVersion = result[Keys.kAppStoreVersionKey] as? String else {
+                    completion(false, AppStoreVersionError.appStoreVersionNotFound)
+                    return
+                }
+                
+                if currentVersion >= appStoreVersion {
+                    completion(true, nil)
                 } else {
                     completion(false, nil)
                 }
-                break
-            case .failure(let error):
-                completion(false, error)
-                break
+            } catch {
+                completion(false, AppStoreVersionError.unableToReadAppStoreResponse)
             }
         }
+        task.resume()
     }
 
 }

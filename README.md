@@ -95,6 +95,17 @@ AppStoreVersion.Config.Alert.laterActionTitle = "No, thanks."
 | `AppStoreVersion.Config.Alert.downloadActionTitle` | `NSLocalizedString("AppStoreVersion.Download", comment: "")` |
 | `AppStoreVersion.Config.Alert.laterActionTitle` | `NSLocalizedString("AppStoreVersion.Later", comment: "")` |
 
+## Errors
+
+The framework extends `Error` in order to notify the followings errors:
+
+| Case | Description |
+|------|-------------|
+| `invalidAppStoreResponseCode` | Returned if the request to the App Store lookup API returns an invalid response code. |
+| `unableToReadAppStoreResponse` | Returned if the framework is unable to read the JSON returned from the App Store lookup API. |
+| `mandatoryKeysNotFound` | Returned if the framework is not able to find the mandatory keys in the JSON returned from the App Store lookup API. |
+| `appStoreVersionNotFound` | Returned if the framework is not able to find the App Store version of your app in the JSON returned from the App Store lookup API. |
+
 ## Contribute
 
 This framework is very simple, and I want it to stay like this. But any new features or suggestions are always welcome, so feel free to create a pull request or open an issue.

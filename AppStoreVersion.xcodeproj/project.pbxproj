@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		72E82A3F8B4A27B95F8B478B /* Pods_AppStoreVersion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A3BF646CC4621305B3776AB6 /* Pods_AppStoreVersion.framework */; };
 		D5B849F9218203C6006EF315 /* AppStoreVersion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D5B849EF218203C5006EF315 /* AppStoreVersion.framework */; };
 		D5B84A00218203C6006EF315 /* AppStoreVersion.h in Headers */ = {isa = PBXBuildFile; fileRef = D5B849F2218203C5006EF315 /* AppStoreVersion.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		D5B84A0B2182046F006EF315 /* AppStoreVersion.swift in Sources */ = {isa = PBXBuildFile; fileRef = D5B84A0A2182046F006EF315 /* AppStoreVersion.swift */; };
@@ -25,11 +24,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0BEA609445A9E1B91B6A036D /* Pods-AppStoreVersion.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreVersion.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreVersion/Pods-AppStoreVersion.debug.xcconfig"; sourceTree = "<group>"; };
 		20268B6886596A84AC13F546 /* Pods_AppVersionChecker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppVersionChecker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2B64D09D4B8DE4313772D127 /* Pods_AppVersionCheckerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppVersionCheckerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		49AF80AEFEA48493EE661A9C /* Pods-AppVersionChecker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppVersionChecker.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppVersionChecker/Pods-AppVersionChecker.release.xcconfig"; sourceTree = "<group>"; };
-		9C9D33D47611D89B82C8D110 /* Pods-AppStoreVersion.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppStoreVersion.release.xcconfig"; path = "Pods/Target Support Files/Pods-AppStoreVersion/Pods-AppStoreVersion.release.xcconfig"; sourceTree = "<group>"; };
 		A3BF646CC4621305B3776AB6 /* Pods_AppStoreVersion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AppStoreVersion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B849EF218203C5006EF315 /* AppStoreVersion.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AppStoreVersion.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D5B849F2218203C5006EF315 /* AppStoreVersion.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppStoreVersion.h; sourceTree = "<group>"; };
@@ -38,7 +34,6 @@
 		D5B84A0A2182046F006EF315 /* AppStoreVersion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppStoreVersion.swift; sourceTree = "<group>"; };
 		D5B84A0F21820B84006EF315 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		D5B84A1121820B96006EF315 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
-		DB3761010F32D0998F27EE3F /* Pods-AppVersionChecker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AppVersionChecker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-AppVersionChecker/Pods-AppVersionChecker.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,7 +41,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72E82A3F8B4A27B95F8B478B /* Pods_AppStoreVersion.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,23 +65,11 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C8D310C554C3063CC38C6E62 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DB3761010F32D0998F27EE3F /* Pods-AppVersionChecker.debug.xcconfig */,
-				49AF80AEFEA48493EE661A9C /* Pods-AppVersionChecker.release.xcconfig */,
-				0BEA609445A9E1B91B6A036D /* Pods-AppStoreVersion.debug.xcconfig */,
-				9C9D33D47611D89B82C8D110 /* Pods-AppStoreVersion.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 		D5B849E5218203C5006EF315 = {
 			isa = PBXGroup;
 			children = (
 				D5B849F1218203C5006EF315 /* AppStoreVersion */,
 				D5B849F0218203C5006EF315 /* Products */,
-				C8D310C554C3063CC38C6E62 /* Pods */,
 				47583B556A22FF885D0608A8 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -130,7 +112,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5B84A03218203C6006EF315 /* Build configuration list for PBXNativeTarget "AppStoreVersion" */;
 			buildPhases = (
-				D06DD8141890C6801B763E50 /* [CP] Check Pods Manifest.lock */,
 				D5B849EA218203C5006EF315 /* Headers */,
 				D5B849EB218203C5006EF315 /* Sources */,
 				D5B849EC218203C5006EF315 /* Frameworks */,
@@ -218,27 +199,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		D06DD8141890C6801B763E50 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-AppStoreVersion-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D5B849EB218203C5006EF315 /* Sources */ = {
@@ -405,7 +365,6 @@
 		};
 		D5B84A04218203C6006EF315 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0BEA609445A9E1B91B6A036D /* Pods-AppStoreVersion.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -423,18 +382,18 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jeremy-peltier.AppStoreVersion";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		D5B84A05218203C6006EF315 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9C9D33D47611D89B82C8D110 /* Pods-AppStoreVersion.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
@@ -452,10 +411,11 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.jeremy-peltier.AppStoreVersion";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

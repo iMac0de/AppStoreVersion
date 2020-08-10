@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "AppStoreVersion"
-  s.version      = "1.0.1"
+  s.version      = "1.0.2"
   s.summary      = "An easy Swift framework to check your latest app version available on the AppStore and compare it to the installed version"
   s.description  = <<-DESC
 			An easy Swift framework to check your latest app version available on the AppStore and compare it to the installed version.
@@ -12,5 +12,4 @@ Pod::Spec.new do |s|
   s.source       = { :git => "https://github.com/iMac0de/AppStoreVersion.git", :tag => "#{s.version}" }
   s.source_files  = "AppStoreVersion", "AppStoreVersion/*.{h,m,swift}"
   s.resource_bundle = { "Localizable" => "AppStoreVersion/*.lproj/*.strings" }
-  s.dependency "Alamofire"
 end
