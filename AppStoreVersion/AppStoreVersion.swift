@@ -80,21 +80,23 @@ open class AppStoreVersion {
             if error != nil {
                 NSLog("AppStoreVersion (%@): %@", AppStoreVersion.version, error!.localizedDescription)
             } else if !upToDate {
-                let alertController = UIAlertController(title: Config.Alert.title, message: String(format: Config.Alert.message, AppStoreVersion.latestVersionAvailable), preferredStyle: .alert)
-                alertController.addAction(UIAlertAction(title: Config.Alert.downloadActionTitle, style: .default, handler: { (_) in
-                    guard let storeURLString = cache?[Keys.kAppStoreURLKey] as? String, let storeURL = URL(string: storeURLString) else {
-                        return
-                    }
-                    if UIApplication.shared.canOpenURL(storeURL) {
-                        UIApplication.shared.open(storeURL, options: [:], completionHandler: nil)
-                    }
-                }))
-                if Config.optional {
-                    alertController.addAction(UIAlertAction(title: Config.Alert.laterActionTitle, style: .cancel, handler: { (_) in
-                        alertController.dismiss(animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController(title: Config.Alert.title, message: String(format: Config.Alert.message, AppStoreVersion.latestVersionAvailable), preferredStyle: .alert)
+                    alertController.addAction(UIAlertAction(title: Config.Alert.downloadActionTitle, style: .default, handler: { (_) in
+                        guard let storeURLString = cache?[Keys.kAppStoreURLKey] as? String, let storeURL = URL(string: storeURLString) else {
+                            return
+                        }
+                        if UIApplication.shared.canOpenURL(storeURL) {
+                            UIApplication.shared.open(storeURL, options: [:], completionHandler: nil)
+                        }
                     }))
+                    if Config.optional {
+                        alertController.addAction(UIAlertAction(title: Config.Alert.laterActionTitle, style: .cancel, handler: { (_) in
+                            alertController.dismiss(animated: true, completion: nil)
+                        }))
+                    }
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
                 }
-                UIApplication.shared.keyWindow?.rootViewController?.present(alertController, animated: true, completion: nil)
             }
         }
     }
