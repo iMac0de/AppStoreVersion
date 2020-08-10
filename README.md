@@ -10,7 +10,7 @@ Because it is not always easy to maintain some features depending on the version
 [![Build Status](https://travis-ci.com/iMac0de/AppStoreVersion.svg?branch=master)](https://travis-ci.com/iMac0de/AppStoreVersion)
 [![License](https://img.shields.io/cocoapods/l/AppStoreVersion.svg?style=flat)](http://cocoadocs.org/docsets/AppStoreVersion)
 [![Platform](https://img.shields.io/cocoapods/p/AppStoreVersion.svg?style=flat)](http://cocoadocs.org/docsets/AppStoreVersion)
-![Swift](https://img.shields.io/badge/%20in-swift%204.2-blue.svg)
+![Swift](https://img.shields.io/badge/%20in-swift%205-blue.svg)
 
 ## Install
 
