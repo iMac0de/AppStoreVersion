@@ -7,6 +7,6 @@
 */
 
 "AppStoreVersion.NewVersionTitle" = "Nouvelle version disponible !";
-"AppStoreVersion.NewVersionMessage" = "La version %@ est disponible sur l'AppStore.";
+"AppStoreVersion.NewVersionMessage" = "La version %@ est disponible sur l'App Store.";
 "AppStoreVersion.Download" = "Télécharger";
 "AppStoreVersion.Later" = "Plus tard";

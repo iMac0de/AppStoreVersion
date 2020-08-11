@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os
 
 open class AppStoreVersion {
 
@@ -152,6 +153,9 @@ open class AppStoreVersion {
                     completion(false, AppStoreVersionError.appStoreVersionNotFound)
                     return
                 }
+                
+                self.cache = result
+                self.latestVersionAvailable = appStoreVersion
                 
                 if currentVersion >= appStoreVersion {
                     completion(true, nil)
